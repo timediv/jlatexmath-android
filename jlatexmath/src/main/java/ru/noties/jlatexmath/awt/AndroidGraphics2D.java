@@ -1,8 +1,10 @@
 package ru.noties.jlatexmath.awt;
 
 import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.support.annotation.Nullable;
 
 import ru.noties.jlatexmath.awt.font.FontRenderContext;
 import ru.noties.jlatexmath.awt.geom.AffineTransform;
@@ -31,6 +33,10 @@ public class AndroidGraphics2D implements Graphics2D {
     public void setCanvas(Canvas canvas) {
         this.canvas = canvas;
         this.transform = AffineTransform.create(canvas);
+    }
+
+    public void setColorFilter(@Nullable ColorFilter colorFilter) {
+        paint.setColorFilter(colorFilter);
     }
 
     @Override

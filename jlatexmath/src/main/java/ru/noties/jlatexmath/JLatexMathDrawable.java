@@ -54,7 +54,7 @@ public class JLatexMathDrawable extends Drawable {
                 .new TeXIconBuilder()
                 .setFGColor(new Color(builder.color))
                 .setSize(builder.textSize)
-                .setStyle(TeXConstants.STYLE_DISPLAY)
+                .setStyle(builder.style)
                 .build();
 
         if (builder.insets != null) {
@@ -129,7 +129,7 @@ public class JLatexMathDrawable extends Drawable {
 
     @Override
     public void setColorFilter(@Nullable ColorFilter colorFilter) {
-        // no op
+        graphics2D.setColorFilter(colorFilter);
     }
 
     @Override
@@ -154,6 +154,7 @@ public class JLatexMathDrawable extends Drawable {
         private float textSize;
         private int color = 0xFF000000;
         private int align;
+        private int style = TeXConstants.STYLE_DISPLAY;
         private Drawable background;
         private Insets insets;
         private boolean fitCanvas = true;
@@ -165,6 +166,12 @@ public class JLatexMathDrawable extends Drawable {
         @NonNull
         public Builder textSize(@Px float textSize) {
             this.textSize = textSize;
+            return this;
+        }
+
+        @NonNull
+        public Builder style(int style) {
+            this.style = style;
             return this;
         }
 
