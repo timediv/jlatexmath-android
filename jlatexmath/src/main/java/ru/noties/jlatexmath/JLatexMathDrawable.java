@@ -86,7 +86,7 @@ public class JLatexMathDrawable extends Drawable {
             if (fitCanvas) {
 
                 // check if we need scaling by checking original bounds against this instance bounds
-                final int w = canvas.getWidth();
+                final int w = getBounds().width();
 
                 // scale down
                 if (iconWidth > w) {
