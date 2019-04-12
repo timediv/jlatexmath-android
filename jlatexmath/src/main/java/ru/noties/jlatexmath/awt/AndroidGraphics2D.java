@@ -50,7 +50,9 @@ public class AndroidGraphics2D implements Graphics2D {
     @Override
     public void setColor(Color color) {
         this.color = color;
+        ColorFilter filter = paint.getColorFilter();
         paint.setColor(color.getColorInt());
+        paint.setColorFilter(filter);
     }
 
     @Override
