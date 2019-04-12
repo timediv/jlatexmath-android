@@ -87,11 +87,14 @@ public class JLatexMathDrawable extends Drawable {
 
                 // check if we need scaling by checking original bounds against this instance bounds
                 final int w = getBounds().width();
+                final int h = getBounds().height();
 
                 // scale down
-                if (iconWidth > w) {
-                    final float ratio = (float) w / iconWidth;
-                    setBounds(0, 0, w, (int) (iconHeight * ratio + .5F));
+                if (iconWidth > w || iconHeight > h) {
+                    final float ratio = Math.min((float) w / iconWidth, (float) h / iconHeight);
+                    setBounds(0, 0,
+                            (int) (iconWidth * ratio + .5F),
+                            (int) (iconHeight * ratio + .5F));
                     canvas.scale(ratio, ratio);
                 } else {
                     // align
